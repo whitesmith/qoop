@@ -3,12 +3,72 @@
   <head>
     <title>App</title>
     <%= csrf_meta_tags %>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <button class="button navbar-burger is-warning" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start">
+          <%= link_to('Qoop', root_path, class: 'navbar-item') %>
+        </div>
+        
+        <div class="navbar-end">
+          <% if user_signed_in? %>
+            <a class="navbar-item">
+              Meals
+            </a>
+            <a class="navbar-item">
+              Wallet
+            </a>
+            <a class="navbar-item">
+              Profile
+            </a>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'navbar-item') %>
+          <% else %>
+            <%= link_to('Login', new_user_session_path, class: 'navbar-item')  %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+
+  // Get all "navbar-burger" elements
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+
+        // Get the target from the "data-target" attribute
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
+</script>
