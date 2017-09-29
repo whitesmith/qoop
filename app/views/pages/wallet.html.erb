@@ -1,59 +1,93 @@
-<%= form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half">
+        <%= form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <div class="field">
+            <%= f.label :wallet_address, class: 'label' %>
+            <%= f.text_field :wallet_address, class: 'input' %>
+          </div>
 
-  <div class="field">
-    <%= f.label :wallet_address %><br />
-    <%= f.text_field :wallet_address %>
+          <div class="control">
+            <%= f.submit "Update", class: 'button is-primary' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="column">
+        <br>
+        YOU HAVE _INSERT_VALUE_HERE_ ETH.
+        <br>
+        YOU HAVE _INSERT_VALUE_HERE_ FUD.
+        <br>
+        <br>
+        1ETH = 1FUD
+        1FUD = 0.5ETH
+        <br>
+      </div>
+    </div>
+
+    <div class="tabs is-fullwidth">
+      <ul>
+        <li class="is-active js-tab" data-target="#tab-buy"><a>Buy FUD</a></li>
+        <li class="js-tab" data-target="#tab-sell"><a>Sell FUD</a></li>
+      </ul>
+    </div>
+
+
+    <div id="tab-buy" class="tab-container">
+      BUY FUD
+      <%= form_tag '/buy_fud' do %>
+        <div class="field">
+          <label class="label">How many?</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Private key</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+
+        <div class="control">
+          <button class="button is-primary js-form-buy-fud">Buy</button>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="tab-sell" class="tab-container" hidden>
+      SELL FUD
+      <%= form_tag '/sell_fud' do %>
+        <div class="field">
+          <label class="label">How many?</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Private key</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+
+        <div class="control">
+          <button class="button is-primary js-form-sell-fud">Sell</button>
+        </div>
+      <% end %>
+    </div>    
   </div>
+</section>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<script type="text/javascript">
+  $('.js-tab').on("click", function() {
+    $('.js-tab').removeClass("is-active");
+    $(this).addClass("is-active");
 
-<% end %>
-
-<br>
-YOU HAVE _INSERT_VALUE_HERE_ ETH.
-<br>
-YOU HAVE _INSERT_VALUE_HERE_ FUD.
-<br>
-<br>
-1ETH = 1FUD
-1FUD = 0.5ETH
-<br>
-
-<br>
-BUY FUD
-<%= form_tag '/buy_fud' do %>
-  <div class="field">
-    <%= label_tag 'How many?' %><br />
-    <%= text_field_tag :fud %>
-  </div>
-
-  <div class="field">
-    <%= label_tag 'Private key' %><br />
-    <%= text_field_tag :p_key %>
-  </div>
-
-  <div class="actions">
-    <button type="button" class="js-form-buy-fud">Buy</button>
-  </div>
-<% end %>
-
-<br>
-SELL FUD
-<%= form_tag '/sell_fud' do %>
-  <div class="field">
-    <%= label_tag 'How many?' %><br />
-    <%= text_field_tag :fud %>
-  </div>
-
-  <div class="field">
-    <%= label_tag 'Private key' %><br />
-    <%= text_field_tag :p_key %>
-  </div>
-
-  <div class="actions">
-    <button type="button" class="js-form-sell-fud">Sell</button>
-  </div>
-<% end %>
-
+    $('.tab-container').hide();
+    $($(this).data("target")).show();
+  });
+</script>
