@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @meals = Meal.all
@@ -25,6 +26,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
+    @meal.owner = current_user
 
     respond_to do |format|
       if @meal.save

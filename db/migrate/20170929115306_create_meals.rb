@@ -6,7 +6,7 @@ class CreateMeals < ActiveRecord::Migration[5.1]
       t.text        :description
       t.datetime    :date
       t.attachment  :image
-      t.references  :owner_id
+      t.integer     :user_id
       t.integer     :max_people
       t.string      :place
       t.text        :tags
