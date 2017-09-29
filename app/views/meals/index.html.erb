@@ -1,25 +1,70 @@
-<p id="notice"><%= notice %></p>
+<section class="section">
+  <div class="container">
 
-<h1>Meals</h1>
+    <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="columns">
+      <div class="column is-half">
+        <h1 class="title">Meals</h1>
+      </div>
+      <div class="column">
+        <%= link_to 'Add new', new_meal_path %>
+      </div>
+    </div>
 
-  <tbody>
-    <% @meals.each do |meal| %>
-      <tr>
-        <td><%= link_to 'Show', meal %></td>
-        <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
-        <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <ul class="list">
+      <li class="list-item">
+        <div class="list-content">
+          <h2>Title</h2>
+          <img src="http://baconmockup.com/250/200" alt="" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, eveniet.</p>
+          <a href="">Link</a>
+        </div>
+      </li>
+      
+       <li class="list-item">
+        <div class="list-content">
+          <h2>Title</h2>
+          <img src="http://baconmockup.com/250/200" alt="" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium, odio vel blanditiis id ea dolorum expedita fugit incidunt commodi.</p>
+          <a href="">Link</a>
+        </div>
+      </li>
+      
+      <li class="list-item">
+        <div class="list-content">
+          <h2>Title</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium.</p>
+          <a href="">Link</a>
+        </div>
+      </li>
+      
+      <li class="list-item">
+        <div class="list-content">
+          <h2>Title</h2>
+          <img src="http://baconmockup.com/250/200" alt="" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur optio ipsa fuga vel repudiandae impedit illum delectus nihil error animi nobis quaerat quidem, amet, praesentium aspernatur inventore numquam! Totam, dolorem inventore reprehenderit, culpa obcaecati!</p>
+          <a href="">Link</a>
+        </div>
+      </li>
+      
+      <li class="list-item">
+        <div class="list-content">
+          <h2>Title</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo veniam tempore vero velit deleniti corporis recusandae placeat eum repellendus modi architecto, iste, numquam nulla, praesentium fuga soluta eos consequatur sequi expedita! Ea aspernatur explicabo optio ducimus officia blanditiis voluptas possimus veniam maxime!</p>
+          <a href="">Link</a>
+        </div>
+      </li>
 
-<br>
-
-<%= link_to 'New Meal', new_meal_path %>
+      
+        <li class="list-item">
+        <div class="list-content">
+          <h2>Title</h2>
+          <!--<img src="http://baconmockup.com/250/200" alt="" />-->
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae esse dolore corporis velit fugiat ipsam tempore optio dicta. Magnam iusto facere, maxime! Praesentium quo laborum, deserunt adipisci. Ipsam officia delectus repudiandae, aperiam magnam blanditiis fuga similique.</p>
+          <a href="">Link</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
