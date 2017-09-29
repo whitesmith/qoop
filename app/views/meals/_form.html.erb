@@ -1,54 +1,101 @@
-<%= form_with(model: meal, local: true, class: "meal-form--js" ) do |form| %>
-  <% if meal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+<section class="section">
+  <div class="container">
+    <%= form_with(model: meal, local: true, class: "meal-form--js" ) do |form| %>
+      <% if meal.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
 
-      <ul>
-      <% meal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% meal.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <%= form.hidden_field :address, id: "meal_address" %>
+      <%= form.hidden_field :address, id: "meal_address" %>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+      <div class="field">
+
+        <% if @meal.image.file? %>
+          <figure class="image is-128x128">
+            <%= image_tag @meal.image.url %>
+          </figure>
+        <% end %>
+
+        <%= form.label :image, class: "label" %>
+        <div class="file is-info has-name is-boxed">
+          <label class="file-label">
+            <%= form.file_field :image, class: "file-input", id: "xxx" %>
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fa fa-cloud-upload"></i>
+              </span>
+              <span class="file-label">
+                Image file
+              </span>
+            </span>
+            <span class="file-name">
+              <%= @meal.image_file_name %>
+            </span>
+          </label>
+        </div>
+
+       <div class="field">
+        <%= form.label :title, class: "label" %>
+        <div class="control">
+          <%= form.text_field :title, required: true, placeholder: "Title of the meal", class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :description, class: "label" %>
+        <div class="control">
+          <%= form.text_area :description, required: true, placeholder: "Description of the meal", class: "textarea"%>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :max_people, class: 'label' %>
+        <div class="control">
+          <%= form.number_field :max_people, required: true, placeholder: "Title of the meal", class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :date, class: 'label' %>
+        <div class="control">
+          <%= form.datetime_field :date, required: true, placeholder: "Date", class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :place, class: 'label' %>
+        <div class="control">
+          <%= form.text_field :place, required: true, placeholder: "Place", class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :tags, class: 'label' %>
+        <div class="control">
+          <%= form.text_field :tags, placeholder: "Tags", class: "input" %>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <%= form.submit nil, class: "button is-primary meal-submit--js" %>
+        </div>
+
+        <div class="control">
+          <%= link_to 'Back', meals_path, class: "button is-link" %>
+        </div>
+      </div>
+    <% end %>
   </div>
+</section>
 
-   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, required: true %>
-  </div>
+<script type="text/javascript">
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :max_people %>
-    <%= form.number_field :max_people, required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_field :date, required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :place %>
-    <%= form.text_field :place, required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tags %>
-    <%= form.text_field :tags %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit nil, class: "meal-submit--js" %>
-  </div>
-<% end %>
+</script>

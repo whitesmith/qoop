@@ -5,3 +5,7 @@ $(document).ready ->
       address = if data["address"]? then data["address"] else null
       $('#meal_address').val(address)
       $('.meal-form--js').submit()
+
+  $(".file-input").on 'change', ->
+    filename = $(this).val().replace(/.*(\/|\\)/, '')
+    $(".file-name").html(filename)
