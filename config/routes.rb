@@ -4,8 +4,12 @@ Rails.application.routes.draw do
     registrations:      'users/registrations',
     sessions:           'users/sessions'
   }
-  get 'pages/index'
 
+  resources :meals do
+    collection { get :address }
+  end
+
+  get 'pages/index'
   root 'pages#index'
 
   get 'wallet' => 'pages#wallet'

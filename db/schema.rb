@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929115243) do
+ActiveRecord::Schema.define(version: 20170929161744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "meals", force: :cascade do |t|
+    t.string "address"
+    t.string "title"
+    t.text "description"
+    t.datetime "date"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "user_id"
+    t.integer "max_people"
+    t.string "place"
+    t.text "tags"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals_users", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "meal_id"
+    t.index ["meal_id"], name: "index_meals_users_on_meal_id"
+    t.index ["user_id"], name: "index_meals_users_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
