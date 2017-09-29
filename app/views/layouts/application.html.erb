@@ -3,8 +3,8 @@
   <head>
     <title>App</title>
     <%= csrf_meta_tags %>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,15 +22,15 @@
         <div class="navbar-start">
           <%= link_to('Qoop', root_path, class: 'navbar-item') %>
         </div>
-        
+
         <div class="navbar-end">
           <% if user_signed_in? %>
             <a class="navbar-item">
               Meals
             </a>
-            <a class="navbar-item">
-              Wallet
-            </a>
+
+            <%= link_to('Wallet', wallet_path, class: 'navbar-item') %>
+
             <a class="navbar-item">
               Profile
             </a>
