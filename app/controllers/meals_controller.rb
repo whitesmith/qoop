@@ -8,6 +8,14 @@ class MealsController < ApplicationController
   def show
   end
 
+  def address
+    if true
+      render json: { address: "0x..." }
+    else
+      render json: { error: "Abort" }
+    end
+  end
+
   def new
     @meal = Meal.new
   end

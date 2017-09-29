@@ -1,4 +1,4 @@
-<%= form_with(model: meal, local: true, class: "meal-form--js") do |form| %>
+<%= form_with(model: meal, local: true, class: "meal-form--js" ) do |form| %>
   <% if meal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
@@ -11,34 +11,36 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :address, id: "meal_address" %>
+
   <div class="field">
     <%= form.label :image %>
-    <%= form.file_field :image%>
+    <%= form.file_field :image %>
   </div>
 
    <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :max_people %>
-    <%= form.number_field :max_people %>
+    <%= form.number_field :max_people, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.datetime_field :date %>
+    <%= form.datetime_field :date, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :place %>
-    <%= form.text_field :place %>
+    <%= form.text_field :place, required: true %>
   </div>
 
   <div class="field">
@@ -47,6 +49,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: "meal-submit--js" %>
   </div>
 <% end %>
