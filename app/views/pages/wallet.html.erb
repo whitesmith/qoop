@@ -10,3 +10,50 @@
   </div>
 
 <% end %>
+
+<br>
+YOU HAVE _INSERT_VALUE_HERE_ ETH.
+<br>
+YOU HAVE _INSERT_VALUE_HERE_ FUD.
+<br>
+<br>
+1ETH = 1FUD
+1FUD = 0.5ETH
+<br>
+
+<br>
+BUY FUD
+<%= form_tag '/buy_fud' do %>
+  <div class="field">
+    <%= label_tag 'How many?' %><br />
+    <%= text_field_tag :fud %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Private key' %><br />
+    <%= text_field_tag :p_key %>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="js-form-buy-fud">Buy</button>
+  </div>
+<% end %>
+
+<br>
+SELL FUD
+<%= form_tag '/sell_fud' do %>
+  <div class="field">
+    <%= label_tag 'How many?' %><br />
+    <%= text_field_tag :fud %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Private key' %><br />
+    <%= text_field_tag :p_key %>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="js-form-sell-fud">Sell</button>
+  </div>
+<% end %>
+
