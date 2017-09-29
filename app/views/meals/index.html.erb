@@ -13,145 +13,16 @@
     </div>
 
     <ul class="list">
-      <li class="list-item">
-        <div class="list-content">
-          <h2>Title</h2>
-          <img src="http://baconmockup.com/250/200" alt="" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium, odio vel blanditiis id ea dolorum expedita fugit incidunt commodi.</p>
-          <br>
-          <div class="columns">
-            <div class="column is-half">
-              <p>Date here</p>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right">XX FUD here</p>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-half">
-              <a href="">Link here</a>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right"> 4 <i class="fa fa-user" aria-hidden="true"></i></p>
-            </div>
-          </div>
-        </div>
-      </li>
-      
-       <li class="list-item">
-        <div class="list-content">
-          <h2>Title</h2>
-          <img src="http://baconmockup.com/250/200" alt="" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium, odio vel blanditiis id ea dolorum expedita fugit incidunt commodi.</p>
-          <br>
-          <div class="columns">
-            <div class="column is-half">
-              <p>Date here</p>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right">XX FUD here</p>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-half">
-              <a href="">Link here</a>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right"> 4 <i class="fa fa-user" aria-hidden="true"></i></p>
-            </div>
-          </div>
-        </div>
-      </li>
-      </li>
-      
-      <li class="list-item">
-        <div class="list-content">
-          <h2>Title</h2>
-          <img src="http://baconmockup.com/250/200" alt="" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium, odio vel blanditiis id ea dolorum expedita fugit incidunt commodi.</p>
-          <br>
-          <div class="columns">
-            <div class="column is-half">
-              <p>Date here</p>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right">XX FUD here</p>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-half">
-              <a href="">Link here</a>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right"> 4 <i class="fa fa-user" aria-hidden="true"></i></p>
-            </div>
-          </div>
-        </div>
-      </li>
-      </li>
-      
-      <li class="list-item">
-        <div class="list-content">
-          <h2>Title</h2>
-          <img src="http://baconmockup.com/250/200" alt="" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium, odio vel blanditiis id ea dolorum expedita fugit incidunt commodi.</p>
-          <br>
-          <div class="columns">
-            <div class="column is-half">
-              <p>Date here</p>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right">XX FUD here</p>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-half">
-              <a href="">Link here</a>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right"> 4 <i class="fa fa-user" aria-hidden="true"></i></p>
-            </div>
-          </div>
-        </div>
-      </li>
-      </li>
-      
-      <li class="list-item">
-        <div class="list-content">
-          <h2>Title</h2>
-          <img src="http://baconmockup.com/250/200" alt="" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium, odio vel blanditiis id ea dolorum expedita fugit incidunt commodi.</p>
-          <br>
-          <div class="columns">
-            <div class="column is-half">
-              <p>Date here</p>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right">XX FUD here</p>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-half">
-              <a href="">Link here</a>
-            </div>
-            <div class="column">
-              <p class="is-pulled-right"> 4 <i class="fa fa-user" aria-hidden="true"></i></p>
-            </div>
-          </div>
-        </div>
-      </li>
-      </li>
-
-      
+      <% Meal.all.each do |meal| %>
         <li class="list-item">
           <div class="list-content">
-            <h2>Title</h2>
+            <h2><%= meal.title %></h2>
             <img src="http://baconmockup.com/250/200" alt="" />
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, vel, quia. Non nostrum, consectetur ipsum doloribus enim maiores a laudantium, odio vel blanditiis id ea dolorum expedita fugit incidunt commodi.</p>
+            <p><%= meal.description %></p>
             <br>
             <div class="columns">
               <div class="column is-half">
-                <p>Date here</p>
+                <p><%= meal.date.strftime("%d/%m/%y: %H:%M:%S") %></p>
               </div>
               <div class="column">
                 <p class="is-pulled-right">XX FUD here</p>
@@ -159,15 +30,15 @@
             </div>
             <div class="columns">
               <div class="column is-half">
-                <a href="">Link here</a>
+                <%= link_to 'Show', meal %>
               </div>
               <div class="column">
-                <p class="is-pulled-right"> 4 <i class="fa fa-user" aria-hidden="true"></i></p>
+                <p class="is-pulled-right"><%= meal.max_people %> <i class="fa fa-user" aria-hidden="true"></i></p>
               </div>
             </div>
           </div>
         </li>
-      </li>
+      <% end %>
     </ul>
   </div>
 </section>

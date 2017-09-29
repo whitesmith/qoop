@@ -9,3 +9,17 @@ User.where(email: 'user@mail.com').first_or_create do |user|
   user.password = 'passw0rd'
   user.password_confirmation = 'passw0rd'
 end
+
+Meal.destroy_all
+9.times.each do
+  Meal.create(
+    owner: User.last,
+    title: 'Bacon',
+    address: '0x123',
+    description: 'Bacon muita bom, daquele!',
+    max_people: 4,
+    date: Date.tomorrow,
+    place: 'Pixels Camp',
+    image: File.new("#{Rails.root}/db/bacon.jpg", "r")
+  )
+end
