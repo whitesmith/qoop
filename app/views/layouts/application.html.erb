@@ -29,9 +29,6 @@
 
             <%= link_to('Wallet', wallet_path, class: 'navbar-item') %>
 
-            <a class="navbar-item">
-              Profile
-            </a>
             <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'navbar-item') %>
           <% else %>
             <%= link_to('Login', new_user_session_path, class: 'navbar-item')  %>
@@ -39,6 +36,12 @@
         </div>
       </div>
     </nav>
+     <div class="notification is-success js-notification" hidden>
+      <button class="delete js-close-notification"></button>
+      <div class="notification-text">
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 </html>
@@ -67,6 +70,10 @@
       });
     });
   }
+
+  $('.js-close-notification').on('click', function() {
+    $('.js-notification').hide();
+  })
 
 });
 </script>

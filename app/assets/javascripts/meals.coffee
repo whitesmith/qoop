@@ -21,12 +21,18 @@ $(document).ready ->
     event.preventDefault();
     # TODO this get should be to the block chain
     $.get("/meals/address").done (data) ->
+      $('#confirm-meal-modal').removeClass('is-active')
       alert('confirm')
+      $('.js-notification').find('.notification-text').text('Meal confirmed with success')
+      $('.js-notification').show()
 
   $('.js-form-close-meal').click ->
     event.preventDefault();
     # TODO this get should be to the block chain
     $.get("/meals/address").done (data) ->
+      $('#close-meal-modal').removeClass('is-active')
       alert('close')
+      $('.js-notification').find('.notification-text').text('Meal closed with success')
+      $('.js-notification').show();
 
   $("#meal_tags").tagsInput();
