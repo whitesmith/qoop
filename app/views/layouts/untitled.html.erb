@@ -1,0 +1,31 @@
+    <header class="nav">
+      <div class="container">
+        <div class="nav-left">
+          <%= link_to(root_path, class: 'nav-item') do %>
+            <%= image_tag("logo-white.png") %>
+          <% end %>
+        </div>
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <div class="nav-right nav-menu">
+          <% if user_signed_in? %>
+            <%= link_to('Meals', meals_path, class: 'nav-item') %>
+
+            <%= link_to('Wallet', wallet_path, class: 'nav-item') %>
+
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'nav-item') %>
+          <% else %>
+            <span class="nav-item">
+              <a class="button is-success is-inverted">
+                <%= link_to('Login', new_user_session_path)  %>
+              </a>
+            </span>
+          <% end %>
+          
+        </div>
+      </div>
+    </header>
+  </div>

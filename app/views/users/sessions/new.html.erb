@@ -1,26 +1,57 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Log In
+      </h1>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</section>
 
-<%= render "users/shared/links" %>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <%= f.email_field :email, autofocus: true, class: "input", placeholder: "Email" %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+
+          <div class="field">
+            <p class="control has-icons-left">
+              <%= f.password_field :password, autocomplete: "off", class: "input", placeholder: "Password" %>
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+            </p>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="field">
+            <p class="control">
+              <%= f.submit "Log in", class: "button is-primary" %>
+            </p>
+          </div>
+        <% end %>
+
+        <%= render "users/shared/links" %>
+
+            </div>
+    </div>
+
+  </div>
+</section>
+

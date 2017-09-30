@@ -13,29 +13,33 @@
   </head>
 
   <body>
-    <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <button class="button navbar-burger is-warning" data-target="navMenu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-      <div class="navbar-menu" id="navMenu">
-        <div class="navbar-start">
-          <%= link_to('Qoop', root_path, class: 'navbar-item') %>
-        </div>
-
-        <div class="navbar-end">
-          <% if user_signed_in? %>
-            <%= link_to('Meals', meals_path, class: 'navbar-item') %>
-
-            <%= link_to('Wallet', wallet_path, class: 'navbar-item') %>
-
-            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'navbar-item') %>
-          <% else %>
-            <%= link_to('Login', new_user_session_path, class: 'navbar-item')  %>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <%= link_to(root_path, class: 'navbar-item') do %>
+            <%= image_tag("logo-white.png", class: "image" ) %>
           <% end %>
+          <button class="button navbar-burger is-primary" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+
+          <div class="navbar-end">
+            <% if user_signed_in? %>
+              <%= link_to('Meals', meals_path, class: 'navbar-item') %>
+
+              <%= link_to('Wallet', wallet_path, class: 'navbar-item') %>
+
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'navbar-item') %>
+            <% else %>
+              <span class="navbar-item">
+                <%= link_to('Login', new_user_session_path, class: 'button is-inverted')  %>
+              </span>
+            <% end %>
+          </div>
         </div>
       </div>
     </nav>
