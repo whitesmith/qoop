@@ -34,5 +34,3 @@ $(document).ready ->
       alert('close')
       $('.js-notification').find('.notification-text').text('Meal closed with success')
       $('.js-notification').show();
-
-  $("#meal_tags").tagsInput();
