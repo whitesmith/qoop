@@ -9,6 +9,14 @@ class App.Fud
     fudContract = @web3.eth.contract(@abi)
     @fudContractInstance = fudContract.at('0x00776a1d0759cb697111b0132731d058f3e67299')
 
+    setTimeout =>
+      @web3.eth.getBalance @web3.eth.defaultAccount, (error, result) ->
+        $('[data-eth-balance]').text(web3.fromWei(result).toString())
+
+      @fudContractInstance.balanceOf @web3.eth.defaultAccount, (error, result) ->
+        $('[data-fud-balance]').text(result.toString())
+    , 1000
+
   setUserWalletAddress: (userWalletAddress) ->
     if @userWalletAddress != undefined then return
 
