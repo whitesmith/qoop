@@ -22,6 +22,7 @@ class MealsController < ApplicationController
   end
 
   def edit
+    redirect_to meal_path(@meal) if @meal.owner != current_user
   end
 
   def create

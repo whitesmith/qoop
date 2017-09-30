@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<section class="section">
+<section class="section is-medium">
   <div class="container">
     <div class="columns">
       <div class="column is-one-third">
@@ -40,11 +38,16 @@
         </div>
       <% end %>
     </div>
+    <% if current_user == @meal.owner %>
+      <%= link_to 'Edit', edit_meal_path(@meal) %> |
+    <% end %>
+    <%= link_to 'Back', meals_path %>
+
   </div>
+
 </section>
 
-<%= link_to 'Edit', edit_meal_path(@meal) %> |
-<%= link_to 'Back', meals_path %>
+
 
 <div id="join-meal-modal" class="modal">
   <div class="modal-background"></div>

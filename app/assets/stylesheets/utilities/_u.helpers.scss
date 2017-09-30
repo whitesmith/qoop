@@ -1,0 +1,31 @@
+/*Flex items*/
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list-item {
+  display: flex; 
+  padding: 0.5em;
+  width: 100%;
+}
+
+@media all and (min-width: 40em) {
+  .list-item {
+    width: 50%;
+  }
+}
+@media all and (min-width: 60em) {
+  .list-item {
+    width: 33.33%;
+  }
+}
+.list-content {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 100%;
+}
+.list-content p {
+  flex: 1 0 auto;
+}

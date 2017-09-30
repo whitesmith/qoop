@@ -12,8 +12,7 @@ Rails.application.routes.draw do
     collection { get :address }
   end
 
-  get 'pages/index'
-  root 'pages#index'
+  root 'meals#index'
 
   get 'wallet' => 'pages#wallet'
 end

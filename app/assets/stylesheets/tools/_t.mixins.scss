@@ -1,0 +1,20 @@
+/*
+  Media Query
+  ----
+  1. Media query targetting viewports between two widths
+  2. Media query targetting viewports wider than this width
+*/
+
+// 1
+@mixin media-between($smaller-breakpoint, $larger-breakpoint) {
+  @media (min-width: ($smaller-breakpoint + 1)) and (max-width: $larger-breakpoint) {
+    @content
+  }
+}
+
+// 2
+@mixin media-wider($breakpoint) {
+  @media (min-width: ($breakpoint + 1)) {
+    @content
+  }
+}
