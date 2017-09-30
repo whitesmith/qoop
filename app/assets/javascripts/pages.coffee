@@ -3,13 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $('.js-form-buy-fud').click ->
-    # TODO this get should be to the block chain
-    alert('buy food')
-    $('.js-notification').find('.notification-text').text('FUD buyed with success')
+    volume = $('[data-buy-volume]').val()
+    window.fud.buy(volume)
+
+    $('.js-notification').find('.notification-text').text('Transaction submitted successfully')
     $('.js-notification').show()
 
   $('.js-form-sell-fud').click ->
-    # TODO this get should be to the block chain
-    alert('sell food')
+    volume = $('[data-sell-volume]').val()
+    window.fud.sell(volume)
+
     $('.js-notification').find('.notification-text').text('FUD selled with success')
     $('.js-notification').show()

@@ -20,8 +20,8 @@
         YOU HAVE _INSERT_VALUE_HERE_ FUD.
         <br>
         <br>
-        1ETH = 1FUD
-        1FUD = 0.5ETH
+        1ETH = 0.015FUD
+        1FUD = 0.0075ETH
         <br>
       </div>
     </div>
@@ -40,14 +40,7 @@
         <div class="field">
           <label class="label">How many?</label>
           <div class="control">
-            <input class="input" type="text">
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Private key</label>
-          <div class="control">
-            <input class="input" type="text">
+            <input class="input" type="text" data-buy-volume>
           </div>
         </div>
 
@@ -63,14 +56,7 @@
         <div class="field">
           <label class="label">How many?</label>
           <div class="control">
-            <input class="input" type="text">
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Private key</label>
-          <div class="control">
-            <input class="input" type="text">
+            <input class="input" type="text" data-sell-volume>
           </div>
         </div>
 
@@ -96,12 +82,3 @@
     $('.js-notification').show();
   });
 </script>
-
-<% if current_user.wallet_address %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      window.fud.setUserWalletAddress("<%= current_user.wallet_address %>")
-      window.fud.init()
-    })
-  </script>
-<% end %>
