@@ -1,4 +1,4 @@
-<section class="section">
+<section id="wallet-section" class="section">
   <div class="container">
     <div class="columns">
       <div class="column is-half">
@@ -78,7 +78,7 @@
           <button type="button" class="button is-primary js-form-sell-fud">Sell</button>
         </div>
       <% end %>
-    </div>    
+    </div>
   </div>
 </section>
 
@@ -91,3 +91,12 @@
     $($(this).data("target")).show();
   });
 </script>
+
+<% if current_user.wallet_address %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      window.fud.setUserWalletAddress("<%= current_user.wallet_address %>")
+      window.fud.init()
+    })
+  </script>
+<% end %>

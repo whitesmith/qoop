@@ -13,4 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
-//= require_tree .
+//= require scope
+
+//= require ./web3
+
+//= require ./cable
+//= require ./meals
+//= require ./pages
+
+//= require_tree ./contracts
+
+//= require ./main
