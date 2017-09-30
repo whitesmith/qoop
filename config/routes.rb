@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :meals do
     member { post :join }
+    member { post :confirm }
+    member { post :close }
     collection { get :address }
   end
 

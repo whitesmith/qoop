@@ -63,6 +63,42 @@
   </div>
 </div>
 
+<div id="confirm-meal-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Do you want to confirm the meal?</p>
+      <button class="delete close-modal" aria-label="close" data-target="#confirm-meal-modal"></button>
+    </header>
+    <section class="modal-card-body">
+      <%= form_for(@meal, method: :post, url: join_meal_path, html: { class: 'confirm-meal--form' } ) do |f| %>
+      <% end %>
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-success js-form-confirm-meal">Yes</button>
+      <button class="button close-modal" data-target="#confirm-meal-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div id="close-meal-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Do you want to close the meal?</p>
+      <button class="delete close-modal" aria-label="close" data-target="#close-meal-modal"></button>
+    </header>
+    <section class="modal-card-body">
+      <%= form_for(@meal, method: :post, url: join_meal_path, html: { class: 'close-meal--form' } ) do |f| %>
+      <% end %>
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-success js-form-close-meal">Yes</button>
+      <button class="button close-modal" data-target="#close-meal-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+
 <script type="text/javascript">
   $('.toggle-modal').on("click", function() {
     $($(this).data("target")).addClass('is-active');

@@ -17,3 +17,15 @@ $(document).ready ->
     # TODO this get should be to the block chain
     $.get("/meals/address").done (data) ->
       $('.join-meal--form').submit()
+
+  $('.js-form-confirm-meal').click ->
+    event.preventDefault();
+    # TODO this get should be to the block chain
+    $.get("/meals/address").done (data) ->
+      alert('confirm')
+
+  $('.js-form-close-meal').click ->
+    event.preventDefault();
+    # TODO this get should be to the block chain
+    $.get("/meals/address").done (data) ->
+      alert('close')
