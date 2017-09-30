@@ -15,6 +15,7 @@
 //= require jquery.tagsinput.min
 //= require rails-ujs
 //= require scope
+//= require js.cookie
 
 //= require ./web3
 

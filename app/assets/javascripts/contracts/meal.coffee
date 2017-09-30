@@ -4,10 +4,21 @@ class App.Meal
 
   init: () ->
 
-  createMeal: () ->
+  createMeal: (mealId, numberOfSeats) ->
+    return unless Cookies.get(mealId)?
 
-  joinMeal: () ->
+    Cookies.set(mealId, 'Transaction Pending')
 
-  confirmMeal: () ->
+    @fudContractInstance.createMeal numberOfSeats, ->
+      # we need to save the meal's address
+      console.log result
+      # write back to the database.
+      $.put()
 
-  closeMeal: () ->
+#   joinMeal: (mealAddress) ->
+#     @fudContractInstance.joinMeal
+#
+#   confirmMeal: () ->
+#     # this must be
+#
+#   closeMeal: () ->

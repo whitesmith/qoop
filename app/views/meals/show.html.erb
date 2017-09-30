@@ -13,11 +13,11 @@
         </strong>
         <p><%= @meal.description %></p>
 
-        <div class="tags">
-          <% @meal.tags.each do |tag| %>
-            <span class="tag is-info"> <%= tag %></span>
-          <% end %>
-        </div>
+        <!-- <div class="tags">
+          <%# (@meal.tags.to_array || []).each do |tag| %>
+            <span class="tag is-info"> <%#= tag %></span>
+          <% #end %>
+        </div> -->
 
       </div>
 
@@ -118,6 +118,10 @@
     $($(this).data("target")).removeClass('is-active');
   });
 
-
+  <% if @create_meal_on_chain.present? %>
+    debugger
+    $(document).on('ready', function() {
+      window.meal.create("<%= @meal.participants %>")
+    });
+  <% end %>
 </script>
-

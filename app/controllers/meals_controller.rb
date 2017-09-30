@@ -7,6 +7,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    @create_meal_on_chain = true unless @meal.chain_address.present?
   end
 
   def address
