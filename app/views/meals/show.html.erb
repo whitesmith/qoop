@@ -14,11 +14,29 @@
           <%= @meal.title %>
         </strong>
         <p><%= @meal.description %></p>
+
+        <div class="tags">
+          <% @meal.tags.each do |tag| %>
+            <span class="tag is-info"> <%= tag %></span>
+          <% end %>
+        </div>
+
       </div>
 
       <% if @meal.owner.id != current_user.id %>
+        <% if @meal.participants.include?(current_user) %>
+          <div class="column is-3">
+            <a class="button is-success toggle-modal" data-target="#confirm-meal-modal">Confirm meal</a>
+          </div>
+        </div>
+        <% else %>
+          <div class="column is-3">
+            <a class="button is-success toggle-modal" data-target="#join-meal-modal">Join meal</a>
+          </div>
+        <% end %>
+      <% else %>
         <div class="column is-3">
-          <a class="button is-success toggle-modal" data-target="#join-meal-modal">Join meal</a>
+          <a class="button is-success toggle-modal" data-target="#close-meal-modal">Close meal</a>
         </div>
       <% end %>
     </div>
@@ -36,7 +54,7 @@
       <button class="delete close-modal" aria-label="close" data-target="#join-meal-modal"></button>
     </header>
     <section class="modal-card-body">
-      <%= form_for join_meal_path(@meal), html: { class: 'join-meal--form' } do |f| %>
+      <%= form_for(@meal, method: :post, url: join_meal_path, html: { class: 'join-meal--form' } ) do |f| %>
         <div class="field">
           <label class="label">Private key</label>
           <div class="control">
@@ -48,6 +66,42 @@
     <footer class="modal-card-foot">
       <button type="submit" class="button is-success js-form-join-meal">Yes</button>
       <button class="button close-modal" data-target="#join-meal-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div id="confirm-meal-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Do you want to confirm the meal?</p>
+      <button class="delete close-modal" aria-label="close" data-target="#confirm-meal-modal"></button>
+    </header>
+    <section class="modal-card-body">
+      <%= form_for(@meal, method: :post, url: join_meal_path, html: { class: 'confirm-meal--form' } ) do |f| %>
+      <% end %>
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-success js-form-confirm-meal">Yes</button>
+      <button class="button close-modal" data-target="#confirm-meal-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div id="close-meal-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Do you want to close the meal?</p>
+      <button class="delete close-modal" aria-label="close" data-target="#close-meal-modal"></button>
+    </header>
+    <section class="modal-card-body">
+      <%= form_for(@meal, method: :post, url: join_meal_path, html: { class: 'close-meal--form' } ) do |f| %>
+      <% end %>
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-success js-form-close-meal">Yes</button>
+      <button class="button close-modal" data-target="#close-meal-modal">Cancel</button>
     </footer>
   </div>
 </div>

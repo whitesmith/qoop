@@ -25,6 +25,7 @@ Meal.destroy_all
     max_people: 4,
     date: Date.tomorrow,
     place: 'Pixels Camp',
-    image: File.new("#{Rails.root}/db/bacon.jpg", "r")
+    image: File.new("#{Rails.root}/db/bacon.jpg", "r"),
+    tags: ["#bacon", "#eatIt"]
   )
 end

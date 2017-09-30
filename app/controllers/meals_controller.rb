@@ -67,6 +67,11 @@ class MealsController < ApplicationController
       return
     end
 
+    if @meal.participants.include?(current_user)
+      redirect_to @meal
+      return
+    end
+
     @meal.participants << current_user
     @meal.save
     redirect_to @meal
@@ -80,6 +85,9 @@ class MealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:address, :title, :description, :max_people, :date, :place, :tags, :image)
+      params.require(:meal).permit(:address, :title, :description,
+                                   :max_people, :date, :place, :tags, :image).tap do |meal|
+        meal[:tags] = meal[:tags].split(',').map(&:strip)
+      end
     end
 end

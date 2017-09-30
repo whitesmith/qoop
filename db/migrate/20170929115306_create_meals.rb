@@ -9,7 +9,7 @@ class CreateMeals < ActiveRecord::Migration[5.1]
       t.integer     :user_id
       t.integer     :max_people
       t.string      :place
-      t.text        :tags
+      t.string        :tags, array: true, default: []
 
       t.timestamps
     end
