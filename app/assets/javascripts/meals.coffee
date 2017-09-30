@@ -11,7 +11,6 @@ $(document).ready ->
     filename = $(this).val().replace(/.*(\/|\\)/, '')
     $(".file-name").html(filename)
 
-
   $('.js-form-join-meal').click ->
     event.preventDefault();
     # TODO this get should be to the block chain
@@ -29,3 +28,5 @@ $(document).ready ->
     # TODO this get should be to the block chain
     $.get("/meals/address").done (data) ->
       alert('close')
+
+  $("#meal_tags").tagsInput();

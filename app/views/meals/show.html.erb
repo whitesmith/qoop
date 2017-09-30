@@ -14,6 +14,13 @@
           <%= @meal.title %>
         </strong>
         <p><%= @meal.description %></p>
+
+        <div class="tags">
+          <% @meal.tags.each do |tag| %>
+            <span class="tag is-info"> <%= tag %></span>
+          <% end %>
+        </div>
+
       </div>
 
       <% if @meal.owner.id != current_user.id %>

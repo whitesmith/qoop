@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170929161744) do
     t.integer "user_id"
     t.integer "max_people"
     t.string "place"
-    t.text "tags"
+    t.string "tags", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
