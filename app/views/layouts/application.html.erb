@@ -26,7 +26,6 @@
           </button>
         </div>
         <div class="navbar-menu" id="navMenu">
-
           <div class="navbar-end">
             <% if user_signed_in? %>
               <%= link_to('Meals', meals_path, class: 'navbar-item') %>
@@ -34,10 +33,6 @@
               <%= link_to('Wallet', wallet_path, class: 'navbar-item') %>
 
               <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'navbar-item') %>
-            <% else %>
-              <span class="navbar-item">
-                <%= link_to('Login', new_user_session_path, class: 'button is-inverted')  %>
-              </span>
             <% end %>
           </div>
         </div>

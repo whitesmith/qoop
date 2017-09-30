@@ -37,6 +37,8 @@ gem "paperclip", "~> 5.0.0"
 
 gem 'jquery-rails'
 gem "bulma-rails", "~> 0.5.3"
+gem 'aws-sdk', '~> 2.3'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
