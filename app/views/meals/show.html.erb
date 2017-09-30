@@ -17,8 +17,19 @@
       </div>
 
       <% if @meal.owner.id != current_user.id %>
+        <% if @meal.participants.include?(current_user) %>
+          <div class="column is-3">
+            <a class="button is-success toggle-modal" data-target="#confirm-meal-modal">Confirm meal</a>
+          </div>
+        </div>
+        <% else %>
+          <div class="column is-3">
+            <a class="button is-success toggle-modal" data-target="#join-meal-modal">Join meal</a>
+          </div>
+        <% end %>
+      <% else %>
         <div class="column is-3">
-          <a class="button is-success toggle-modal" data-target="#join-meal-modal">Join meal</a>
+          <a class="button is-success toggle-modal" data-target="#close-meal-modal">Close meal</a>
         </div>
       <% end %>
     </div>
@@ -36,7 +47,7 @@
       <button class="delete close-modal" aria-label="close" data-target="#join-meal-modal"></button>
     </header>
     <section class="modal-card-body">
-      <%= form_for join_meal_path(@meal), html: { class: 'join-meal--form' } do |f| %>
+      <%= form_for(@meal, method: :post, url: join_meal_path, html: { class: 'join-meal--form' } ) do |f| %>
         <div class="field">
           <label class="label">Private key</label>
           <div class="control">

@@ -67,6 +67,11 @@ class MealsController < ApplicationController
       return
     end
 
+    if @meal.participants.include?(current_user)
+      redirect_to @meal
+      return
+    end
+
     @meal.participants << current_user
     @meal.save
     redirect_to @meal
