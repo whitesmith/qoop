@@ -7,14 +7,6 @@
         <figure class="image is-256x256">
           <%= image_tag @meal.image.url %>
         </figure>
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fa fa-upload"></i>
-          </span>
-          <span class="file-label">
-            Choose a file…
-          </span>
-        </span>
       </div>
 
       <div class="column">
@@ -24,12 +16,51 @@
         <p><%= @meal.description %></p>
       </div>
 
-      <div class="column is-3">
-        cCqjd
-      </div>
+      <% if @meal.owner.id != current_user.id %>
+        <div class="column is-3">
+          <a class="button is-success toggle-modal" data-target="#join-meal-modal">Join meal</a>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>
 
 <%= link_to 'Edit', edit_meal_path(@meal) %> |
 <%= link_to 'Back', meals_path %>
+
+<div id="join-meal-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Do you want to join the meal?</p>
+      <button class="delete close-modal" aria-label="close" data-target="#join-meal-modal"></button>
+    </header>
+    <section class="modal-card-body">
+      <%= form_for join_meal_path(@meal), html: { class: 'join-meal--form' } do |f| %>
+        <div class="field">
+          <label class="label">Private key</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+      <% end %>
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-success js-form-join-meal">Yes</button>
+      <button class="button close-modal" data-target="#join-meal-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.toggle-modal').on("click", function() {
+    $($(this).data("target")).addClass('is-active');
+  });
+
+  $('.close-modal').on("click", function() {
+    $($(this).data("target")).removeClass('is-active');
+  });
+
+
+</script>
+

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   }
 
   resources :meals do
+    member { post :join }
     collection { get :address }
   end
 

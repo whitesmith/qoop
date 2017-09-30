@@ -59,6 +59,19 @@ class MealsController < ApplicationController
     end
   end
 
+  def join
+    @meal = Meal.find(params[:id])
+
+    if @meal.owner.id == current_user.id
+      redirect_to @meal
+      return
+    end
+
+    @meal.participants << current_user
+    @meal.save
+    redirect_to @meal
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meal
