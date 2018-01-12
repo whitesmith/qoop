@@ -49,7 +49,7 @@ _Now for the nitty-gritty._
 ### FUD
 The `FUD` token is an [ERC20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard) compliant token, living for now in the Pixels Camp Ethereum Testnet. You can find the smart contract living at `0x00776a1d0759cb697111b0132731d058f3e67299`. If you want you can see [the source code for the contract](https://github.com/whitesmith/qoop/tree/master/contracts), as well as its JSON interface so you can call it directly if you want.
 
-Additionally to the ERC20 methods, this contract also specifies the `buy` and `sell`methods to make the `ETH <-> EXP` transactions and a couple of extra functions to deal with creating and managing meals.
+Additionally to the ERC20 methods, this contract also specifies the `buy` and `sell`methods to make the `ETH <-> FUD` transactions and a couple of extra functions to deal with creating and managing meals.
 
 This contract is defined so half the received `ETH` is credited to its owner, so the charitable donations can be performed using `ETH` or some fiat currency. In the future we hope to be able to interact with other smart contracts deployed by charities, so we can keep accountability at a maximum.
 
